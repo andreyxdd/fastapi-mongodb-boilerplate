@@ -16,4 +16,11 @@ MONGO_URI = f"mongodb+srv:/\
         {MONGO_DB_NAME}?retryWrites=true&w=majority"
 
 # API key to access endpoints
-SERVER_KEY = os.getenv("API_KEY")
+API_KEY = os.getenv("API_KEY")
+
+# Developer email-notifications
+DEV_SENDER_EMAIL = os.getenv("DEV_SENDER_EMAIL")
+DEV_SENDER_SERVICE_PASSWORD = os.getenv("DEV_SENDER_SERVICE_PASSWORD")
+DEV_SENDER_SERVICE = os.getenv("DEV_SENDER_SERVICE")
+DEV_SENDER_SERVICE_PORT = os.getenv("DEV_SENDER_SERVICE_PORT")
+DEV_RECIEVER_EMAIL = os.getenv("DEV_RECIEVER_EMAIL")
