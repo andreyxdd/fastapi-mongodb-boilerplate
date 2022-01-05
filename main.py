@@ -1,14 +1,35 @@
 """
- Main script
+FastAPI v-template
 """
+import uvicorn  # pylint: disable=E0401
+from fastapi import FastAPI  # pylint: disable=E0401
+from fastapi.responses import Response  # pylint: disable=E0401
+from core.settings import DEFAULT_ROUTE_STR
+from api import router as endpoint_router
+from db.mongodb import close, connect
+
+app = FastAPI(title="FastAPI app", version="template")
+
+app.include_router(endpoint_router, prefix=DEFAULT_ROUTE_STR)
 
 
-def main():
-    """
-    Main function
-    """
-    print("Hello FastAPI!")
+@app.on_event("startup")
+async def on_app_start():
+    """Anything that needs to be done while app starts"""
+    await connect()
+
+
+@app.on_event("shutdown")
+async def on_app_shutdown():
+    """Anything that needs to be done while app shutdown"""
+    await close()
+
+
+@app.get("/")
+async def home():
+    """Home page"""
+    return Response("FastAPI v-template")
 
 
 if __name__ == "__main__":
-    main()
+    uvicorn.run(app, log_level="debug", reload=True)
