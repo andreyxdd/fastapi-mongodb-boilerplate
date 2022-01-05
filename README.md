@@ -9,9 +9,17 @@
 - ```main.py```: script to initiate the server, open/close connection to db
 
 ## Launching
-To launch the project, first install all the requirements (preferably after creating a virtual environment):
+First, install all the necessary packages (preferably after creating a virtual environment):
 ```
 pip install -r requirements.txt
+```
+
+Then create (or generate) ```.pylintrc``` in the root folder. Make sure the below settings are added to this file:
+```
+[MASTER]
+init-hook='import sys; sys.path.append("global/path/to/root/directory")'
+[BASIC]
+good-names=i, df, e, ist, db
 ```
 
 Then start the FastAPI app with:
