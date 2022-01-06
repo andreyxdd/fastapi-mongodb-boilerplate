@@ -18,20 +18,16 @@ Then start the FastAPI app with:
 uvicorn main:app --reload
 ```
 
-## Linting and pre-commit hooks
-
-This template project also utilizes the pre-commit hooks (see ```.pre-commit-config.yaml``` for details). The ```pylint``` is selected as a default linter. To avoid certain warnings, create (or generate) ```.pylintrc``` in the root folder. Make sure the below settings are added to this file:
-```
-[MASTER]
-init-hook='import sys; sys.path.append("global/path/to/root/directory")'
-[BASIC]
-good-names=i, df, e, ist, db
-```
-Besides running ```pylint```, the pre-commit hooks upgrade packages with ```pyupgrade``` and check code for formating with ```black```.
+## Linting
+The ```pylint``` is selected as a default linter. To avoid certain warnings, adjust settings of ```.pylintrc``` in the root folder.
+Currently, the following warnings are ignored:
+- ```E1136``` relates to the issues with ```Optional``` and ```Union``` types from ```typings```
+- ```E0401``` indicates erreneous importings
+- ```E0402``` indicates erreneous relative importings
 
 It is recommended to initiate the linter tool in the code editor. For example, in VSCode, press ```ctrl+shift+p```, search for ```Select linter``` and choose ```pylint```.
 
-## Other notes
-In the code, certain ```pylint``` warnings are disabled:
-- ```E1136``` relates to the issues with ```Optional``` and ```Union``` types from ```typings```
-- ```E0401``` is a ```pylint``` error for some imported modules
+## Linting and pre-commit hooks
+
+This template project also utilizes the pre-commit hooks (see ```.pre-commit-config.yaml``` for details). Besides running ```pylint``` in all files in the directory and subdirectories, the pre-commit hooks upgrade packages with ```pyupgrade``` and check code for formating with ```black```. To use pre-commit hooks, before committing, run:
+```$ pre-commit install```
