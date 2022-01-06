@@ -9,23 +9,29 @@
 - ```main.py```: script to initiate the server, open/close connection to db
 
 ## Launching
-First, install all the necessary packages (preferably after creating a virtual environment):
+First, initiate the virtual environment in the root folder. Then install all the necessary packages with:
 ```
 pip install -r requirements.txt
 ```
+Then start the FastAPI app with:
+```
+uvicorn main:app --reload
+```
 
-Then create (or generate) ```.pylintrc``` in the root folder. Make sure the below settings are added to this file:
+## Linting and pre-commit hooks
+
+This template project also utilizes the pre-commit hooks (see ```.pre-commit-config.yaml``` for details). The ```pylint``` is selected as a default linter. To avoid certain warnings, create (or generate) ```.pylintrc``` in the root folder. Make sure the below settings are added to this file:
 ```
 [MASTER]
 init-hook='import sys; sys.path.append("global/path/to/root/directory")'
 [BASIC]
 good-names=i, df, e, ist, db
 ```
+Besides running ```pylint```, the pre-commit hooks upgrade packages with ```pyupgrade``` and check code for formating with ```black```.
 
-Then start the FastAPI app with:
-```
-uvicorn main:app --reload
-```
+It is recommended to initiate the linter tool in the code editor. For example, in VSCode, press ```ctrl+shift+p```, search for ```Select linter``` and choose ```pylint```.
 
 ## Other notes
-This template project also utilizes the pre-commit hooks. For details see ```.pre-commit-config.yaml```
+In the code, certain ```pylint``` warnings are disabled:
+- ```E1136``` relates to the issues with ```Optional``` and ```Union``` types from ```typings```
+- ```E0401``` is a ```pylint``` error for some imported modules
