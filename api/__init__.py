@@ -2,9 +2,9 @@
  Initializing some default parameters for api routes
 """
 
-from fastapi import APIRouter  # pylint: disable=E0401
+from fastapi import APIRouter
 
-from api.endpoints.tests import tests_router
+from .endpoints.tests import tests_router
 
 router = APIRouter()
 

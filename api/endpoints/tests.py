@@ -2,12 +2,12 @@
 Routes to test API
 """
 from typing import Optional
-from fastapi import APIRouter, Depends, HTTPException  # pylint: disable=E0401
-from fastapi.responses import Response  # pylint: disable=E0401
+from fastapi import APIRouter, Depends, HTTPException
+from fastapi.responses import Response
 
-from core.settings import API_KEY
-from utils.handle_datetimes import is_valid_date
-from db.mongodb import AsyncIOMotorClient, get_database
+from ...core.settings import API_KEY
+from ...utils.handle_datetimes import is_valid_date
+from ...db.mongodb import AsyncIOMotorClient, get_database
 
 tests_router = APIRouter()
 
@@ -28,7 +28,7 @@ async def home():
 async def validate_date_string(
     api_key: str,
     db: AsyncIOMotorClient = Depends(get_database),
-    date_string: Optional[str] = "2021-12-12",  # pylint: disable=E1136
+    date_string: Optional[str] = "2021-12-12",
 ):
     """
     Endpoint to validate date string

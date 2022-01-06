@@ -4,7 +4,7 @@
 import smtplib
 from typing import Optional, Union
 
-from core.settings import (
+from ..core.settings import (
     DEV_SENDER_EMAIL,
     DEV_SENDER_SERVICE_PASSWORD,
     DEV_SENDER_SERVICE,
@@ -14,8 +14,8 @@ from core.settings import (
 
 
 def notify_developer(
-    recievers: Optional[Union[list[str], str]] = None,  # pylint: disable=E1136
-    body: Optional[str] = "Test Notification",  # pylint: disable=E1136
+    recievers: Optional[Union[list[str], str]] = None,
+    body: Optional[str] = "Test Notification",
 ):
     """
     Function to notify email (usually when certain code exceptions appears during runtime)

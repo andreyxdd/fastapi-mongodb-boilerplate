@@ -1,12 +1,12 @@
 """
 FastAPI v-template
 """
-import uvicorn  # pylint: disable=E0401
-from fastapi import FastAPI  # pylint: disable=E0401
-from fastapi.responses import Response  # pylint: disable=E0401
-from core.settings import DEFAULT_ROUTE_STR
-from api import router as endpoint_router
-from db.mongodb import close, connect
+import uvicorn
+from fastapi import FastAPI
+from fastapi.responses import Response
+from .core.settings import DEFAULT_ROUTE_STR
+from .api import router as endpoint_router
+from .db.mongodb import close, connect
 
 app = FastAPI(title="FastAPI app", version="template")
 

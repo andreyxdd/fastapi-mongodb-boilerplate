@@ -130,6 +130,3 @@ dmypy.json
 
 # VS-code settings
 .vscode
-
-# pylint additional settings
-.pylintrc

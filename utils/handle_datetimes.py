@@ -6,7 +6,7 @@
 
 from typing import Union, Optional
 from datetime import datetime, timedelta
-import pytz  # pylint: disable=E0401
+import pytz
 
 
 def get_today_utc_date_in_timezone(timezone: str) -> str:
@@ -25,8 +25,8 @@ def get_today_utc_date_in_timezone(timezone: str) -> str:
 
 def get_array_of_past_dates(
     n_days: int,
-    base_date: Optional[Union[datetime, str]] = None,  # pylint: disable=E1136
-    timezone: Optional[str] = "America/New_York",  # pylint: disable=E1136
+    base_date: Optional[Union[datetime, str]] = None,
+    timezone: Optional[str] = "America/New_York",
 ) -> list[str]:
     """
     Function to construct an array of date-strings
@@ -56,8 +56,8 @@ def get_array_of_past_dates(
 
 def get_past_date(
     n_days: int,
-    base_date: Optional[Union[datetime, str]] = None,  # pylint: disable=E1136
-    timezone: Optional[str] = "America/New_York",  # pylint: disable=E1136
+    base_date: Optional[Union[datetime, str]] = None,
+    timezone: Optional[str] = "America/New_York",
 ) -> str:
     """
     Function that returns the date-string represeinting n_days ago from the base_date.
@@ -87,8 +87,8 @@ def get_past_date(
 
 def get_future_date(
     n_days: int,
-    base_date: Optional[Union[datetime, str]] = None,  # pylint: disable=E1136
-    timezone: Optional[str] = "America/New_York",  # pylint: disable=E1136
+    base_date: Optional[Union[datetime, str]] = None,
+    timezone: Optional[str] = "America/New_York",
 ) -> str:
     """
     Function that returns the date-string represeinting n_days into the future from the base_date.
@@ -116,9 +116,7 @@ def get_future_date(
     return (base_date + timedelta(days=n_days)).strftime("%Y-%m-%d")
 
 
-def is_valid_date(
-    date_string: str, date_format: Optional[str] = "%Y-%m-%d"  # pylint: disable=E1136
-) -> bool:
+def is_valid_date(date_string: str, date_format: Optional[str] = "%Y-%m-%d") -> bool:
     """
     Function to validate the date-string with the provided format.
 
@@ -146,7 +144,7 @@ def is_valid_date(
     return is_valid
 
 
-def get_epoch(date_time: Union[datetime, str]) -> int:  # pylint: disable=E1136
+def get_epoch(date_time: Union[datetime, str]) -> int:
     """
     Function that converts datetime object or date-string
     into UNIX/epoch time relative to UTC.
